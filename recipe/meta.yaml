@@ -7,7 +7,7 @@ package:
 source:
     fn: iris_grib{{ version }}.tar.gz
     url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
-    sha256: 91847e48a75a22c3330a8ed46bd9afba136c7e9145a9800c120f572a1d17b3b3
+    sha256: 18df593e20e38f0015436642badfea3abca8352ad071a6e070c639e84725459b
 
 build:
     number: 0

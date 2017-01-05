@@ -1,42 +1,44 @@
 {% set version = "0.9.1" %}
 
 package:
-    name: iris-grib
-    version: {{ version }}
+  name: iris-grib
+  version: {{ version }}
 
 source:
-    fn: iris_grib{{ version }}.tar.gz
-    url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
-    sha256: 18df593e20e38f0015436642badfea3abca8352ad071a6e070c639e84725459b
+  fn: iris_grib{{ version }}.tar.gz
+  url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
+  sha256: 18df593e20e38f0015436642badfea3abca8352ad071a6e070c639e84725459b
 
 build:
-    number: 0
-    skip: True  # [win or py3k]
-    script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  skip: True  # [win or py3k]
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-        - python-ecmwf_grib
-    run:
-        - python
-        - python-ecmwf_grib
+  build:
+    - python
+    - setuptools
+    - python-ecmwf_grib
+  run:
+    - python
+    - python-ecmwf_grib
 
 test:
-    requires:
-        - iris
-        - iris-sample-data
-        - pep8
-    commands:
-        - python -m unittest discover -v iris_grib.tests
+  requires:
+    - iris
+    - iris-sample-data
+    - pep8
+  commands:
+    - conda inspect linkages -p $PREFIX iris-grib  # [not win]
+    - conda inspect objects -p $PREFIX iris-grib  # [osx]
 
 about:
-    home: http://scitools.org.uk/iris-grib
-    license: LGPL-3.0
-    summary: 'Iris GRIB interface.'
+  home: http://scitools.org.uk/iris-grib
+  license: LGPL-3.0
+  license_file: COPYING.LESSER
+  summary: 'Iris GRIB interface.'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - bjlittle
+  recipe-maintainers:
+    - ocefpaf
+    - bjlittle

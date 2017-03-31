@@ -1,4 +1,4 @@
-{% set version = "0.9.1" %}
+{% set version = "0.10.0" %}
 
 package:
   name: iris-grib
@@ -7,10 +7,10 @@ package:
 source:
   fn: iris_grib{{ version }}.tar.gz
   url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
-  sha256: 18df593e20e38f0015436642badfea3abca8352ad071a6e070c639e84725459b
+  sha256: 5dadbfe320c316902c9b8a43d16fa8a0815842036492aa525f0381e2f84b0007
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win or py3k]
   script: python setup.py install --single-version-externally-managed --record record.txt
 
@@ -42,3 +42,4 @@ extra:
   recipe-maintainers:
     - ocefpaf
     - bjlittle
+    - djkirkham

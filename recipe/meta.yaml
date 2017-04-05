@@ -1,4 +1,4 @@
-{% set version = "0.10.0" %}
+{% set version = "0.10.1" %}
 
 package:
   name: iris-grib
@@ -7,7 +7,7 @@ package:
 source:
   fn: iris_grib{{ version }}.tar.gz
   url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
-  sha256: 5dadbfe320c316902c9b8a43d16fa8a0815842036492aa525f0381e2f84b0007
+  sha256: 1b0e6bfb1675fb2d193077e49f47233d437d3fac95744c45ca35fddd6ac7f853
 
 build:
   number: 0

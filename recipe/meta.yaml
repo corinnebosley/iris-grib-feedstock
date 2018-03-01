@@ -5,19 +5,18 @@ package:
   version: {{ version }}
 
 source:
-  fn: iris_grib{{ version }}.tar.gz
   url: https://github.com/SciTools/iris-grib/archive/v{{ version }}.tar.gz
   sha256: c2e92d25d8bfd2ddff22ae47c4532c884678bac6ea0d935367eced051ae08bb3
 
 build:
   number: 0
   skip: True  # [win or py3k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
     - python-ecmwf_grib
   run:
     - python
@@ -29,8 +28,8 @@ test:
     - iris-sample-data
     - pep8
   commands:
-    - conda inspect linkages -p $PREFIX iris-grib  # [not win]
-    - conda inspect objects -p $PREFIX iris-grib  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://scitools.org.uk/iris-grib

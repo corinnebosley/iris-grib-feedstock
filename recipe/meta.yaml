@@ -34,6 +34,7 @@ test:
 about:
   home: http://scitools.org.uk/iris-grib
   license: LGPL-3.0
+  license_family: LGPL
   license_file: COPYING.LESSER
   summary: 'Iris GRIB interface.'
 

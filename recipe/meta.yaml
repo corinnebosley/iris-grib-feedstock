@@ -9,7 +9,7 @@ source:
   sha256: c2e92d25d8bfd2ddff22ae47c4532c884678bac6ea0d935367eced051ae08bb3
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or py3k]
   script: python -m pip install --no-deps --ignore-installed .
 
@@ -17,22 +17,20 @@ requirements:
   build:
     - python
     - pip
-    - python-ecmwf_grib
   run:
     - python
-    - python-ecmwf_grib
+    - iris >=2
+    - python-eccodes
 
 test:
-  requires:
-    - iris
-    - iris-sample-data
-    - pep8
+  imports:
+    - iris_grib
   commands:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
-  home: http://scitools.org.uk/iris-grib
+  home: https://iris-grib.readthedocs.io
   license: LGPL-3.0
   license_family: LGPL
   license_file: COPYING.LESSER
@@ -43,3 +41,4 @@ extra:
     - ocefpaf
     - bjlittle
     - djkirkham
+    - pp-mo
